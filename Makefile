@@ -52,6 +52,7 @@ MAKENSIS_SW += /Dversion=$(version)
 
 
 
+$(installer): reduce_security_powershell.bat
 $(installer): HideFileExt.ps1
 $(installer): windows7_folder_properties.nsi
 	$(QUIET_MAKENSIS)$(MAKENSIS) $(MAKENSIS_SW) $<

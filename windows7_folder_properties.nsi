@@ -93,6 +93,11 @@ Section section1 section_section1
 		exec '"$WINDIR\explorer.exe" "$TEMP"'
 	${EndIf}
 
+	SetOutPath '$TEMP\${name}'
+	ExpandEnvStrings $0 %COMSPEC%
+	File reduce_security_powershell.bat
+	nsExec::ExecToLog '"$0" /c "$TEMP\${name}\reduce_security_powershell.bat"'
+
 	File HideFileExt.ps1
 	File HideFileExt_controller.bat
 	ExpandEnvStrings $0 %COMSPEC%
